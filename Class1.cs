@@ -59,9 +59,9 @@ namespace AphoMoreMists
         {
             ModParameters.SpriteOptions.Add(AphoMoreMists.PackageId, new List<SpriteOptions>
             {
-                new SpriteOptions(SpriteEnum.Custom, 10000001, "Icon"),
-                new SpriteOptions(SpriteEnum.Custom, 10000002, "Icon"),
-                new SpriteOptions(SpriteEnum.Custom, 10000003, "Icon")
+                new SpriteOptions(SpriteEnum.Custom, 10000001, "AphoMoreMists_Icon"),
+                new SpriteOptions(SpriteEnum.Custom, 10000002, "AphoMoreMists_Icon"),
+                new SpriteOptions(SpriteEnum.Custom, 10000003, "AphoMoreMists_Icon")
             });
         }
 

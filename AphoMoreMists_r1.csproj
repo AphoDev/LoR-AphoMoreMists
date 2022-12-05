@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="1BigDLL4221">
+    <Reference Include="1BigDLL4221, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Library Of Ruina\LibraryOfRuina_Data\Mods\AphoMoreMists\Assemblies\1BigDLL4221.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
