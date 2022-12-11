@@ -22,6 +22,7 @@ namespace AphoMoreMists
         {
             OnInitParameters();
             ArtUtil.GetArtWorks(new DirectoryInfo(AphoMoreMists.Path + "/ArtWork"));
+            ArtUtil.GetCardArtWorks(new DirectoryInfo(AphoMoreMists.Path + "/CardArtWork"));
             ArtUtil.PreLoadBufIcons();
             CardUtil.ChangeCardItem(ItemXmlDataList.instance, AphoMoreMists.PackageId);
             KeypageUtil.ChangeKeypageItem(Singleton<BookXmlList>.Instance, AphoMoreMists.PackageId);
@@ -53,15 +54,22 @@ namespace AphoMoreMists
             {
                 new LorId(AphoMoreMists.PackageId, 10000001)
             }));
-        }
-
+            //EGO Cards for testing, remember to delete on release
+            /*ModParameters.StartUpRewardOptions.Add(new RewardOptions(cards: new Dictionary<LorId, int>
+            {
+                { new LorId(AphoMoreMists.PackageId, 6), 1 },
+                { new LorId(AphoMoreMists.PackageId, 16), 1 },
+                { new LorId(AphoMoreMists.PackageId, 26), 1 },
+            }));*/
+         }
         private static void OnInitSprites()
         {
             ModParameters.SpriteOptions.Add(AphoMoreMists.PackageId, new List<SpriteOptions>
             {
                 new SpriteOptions(SpriteEnum.Custom, 10000001, "AphoMoreMists_Icon"),
                 new SpriteOptions(SpriteEnum.Custom, 10000002, "AphoMoreMists_Icon"),
-                new SpriteOptions(SpriteEnum.Custom, 10000003, "AphoMoreMists_Icon")
+                new SpriteOptions(SpriteEnum.Custom, 10000003, "AphoMoreMists_Icon"),
+                new SpriteOptions(SpriteEnum.Custom, 10000004, "AphoMoreMists_Icon"),
             });
         }
 
@@ -69,51 +77,63 @@ namespace AphoMoreMists
         {
             ModParameters.KeypageOptions.Add(AphoMoreMists.PackageId, new List<KeypageOptions>
             {
-                new KeypageOptions(1, keypageColorOptions: new KeypageColorOptions(Color.red, Color.red)),
-                new KeypageOptions(2, keypageColorOptions: new KeypageColorOptions(new Color(1f, 0.3f, 0f), new Color(1f, 0.3f, 0f))),
-                new KeypageOptions(3, keypageColorOptions: new KeypageColorOptions(Color.gray, Color.gray)),
                 new KeypageOptions(10000001, keypageColorOptions: new KeypageColorOptions(Color.red, Color.red)),
                 new KeypageOptions(10000002, keypageColorOptions: new KeypageColorOptions(new Color(1f, 0.3f, 0f), new Color(1f, 0.3f, 0f))),
                 new KeypageOptions(10000003, keypageColorOptions: new KeypageColorOptions(Color.gray, Color.gray)),
+                new KeypageOptions(10000004, keypageColorOptions: new KeypageColorOptions(new Color(0.533f, 0.031f, 0.031f), new Color(0.533f, 0.031f, 0.031f))),
             });
         }
 
         private static void OnInitPassives()
         {
+            Color firered = new Color(1f, 0.3f, 0f), bloodred = new Color(0.533f, 0.031f, 0.031f);
             ModParameters.PassiveOptions.Add(AphoMoreMists.PackageId, new List<PassiveOptions>
             {
                 new PassiveOptions(1, transferable: false),
-                new PassiveOptions(2, transferable: false, passiveColorOptions: new PassiveColorOptions(new Color(1f, 0.3f, 0f), new Color(1f, 0.3f, 0f))),
-                new PassiveOptions(3, passiveColorOptions: new PassiveColorOptions(new Color(0.89f, 0.259f, 0.204f), new Color(1f, 0.3f, 0f))),
-                new PassiveOptions(4, passiveColorOptions: new PassiveColorOptions(new Color(0.89f, 0.259f, 0.204f), new Color(1f, 0.3f, 0f))),
-                new PassiveOptions(5, passiveColorOptions: new PassiveColorOptions(new Color(0.89f, 0.259f, 0.204f), new Color(1f, 0.3f, 0f))),
+                new PassiveOptions(2, transferable: false, passiveColorOptions: new PassiveColorOptions(firered, firered)),
+                new PassiveOptions(3, passiveColorOptions: new PassiveColorOptions(firered, firered)),
+                new PassiveOptions(4, passiveColorOptions: new PassiveColorOptions(firered, firered)),
+                new PassiveOptions(5, passiveColorOptions: new PassiveColorOptions(firered, firered)),
                 new PassiveOptions(6, transferable: false, passiveColorOptions: new PassiveColorOptions(Color.gray, Color.gray)),
                 new PassiveOptions(7, passiveColorOptions: new PassiveColorOptions(Color.gray, Color.gray)),
                 new PassiveOptions(8, passiveColorOptions: new PassiveColorOptions(Color.gray, Color.gray)),
-                new PassiveOptions(9, passiveColorOptions: new PassiveColorOptions(Color.gray, Color.gray))
+                new PassiveOptions(9, passiveColorOptions: new PassiveColorOptions(Color.gray, Color.gray)),
+                new PassiveOptions(10, transferable: false, passiveColorOptions: new PassiveColorOptions(bloodred, bloodred)),
+                new PassiveOptions(11, passiveColorOptions: new PassiveColorOptions(bloodred, bloodred)),
+                new PassiveOptions(12, passiveColorOptions: new PassiveColorOptions(bloodred, bloodred)),
+                new PassiveOptions(13, passiveColorOptions: new PassiveColorOptions(bloodred, bloodred)),
             });
         }
-
         private static void OnInitCards()
         {
+            Color firered = new Color(1f, 0.3f, 0f), bloodred = new Color(0.533f, 0.031f, 0.031f);
             ModParameters.CardOptions.Add(AphoMoreMists.PackageId, new List<CardOptions>
             {
-                new CardOptions(1, cardColorOptions: new CardColorOptions(new Color(1f, 0.3f, 0f))),
-                new CardOptions(2, cardColorOptions: new CardColorOptions(new Color(1f, 0.3f, 0f))),
-                new CardOptions(3, cardColorOptions: new CardColorOptions(new Color(1f, 0.3f, 0f))),
-                new CardOptions(4, cardColorOptions: new CardColorOptions(new Color(1f, 0.3f, 0f))),
-                new CardOptions(5, cardColorOptions: new CardColorOptions(new Color(1f, 0.3f, 0f))),
-                new CardOptions(6, cardColorOptions: new CardColorOptions(new Color(1f, 0.45f, 0f))),
+                new CardOptions(1, cardColorOptions: new CardColorOptions(firered, rightFrame: "Apho_MistBlazing_RightPage")),
+                new CardOptions(2, cardColorOptions: new CardColorOptions(firered, rightFrame: "Apho_MistBlazing_RightPage")),
+                new CardOptions(3, cardColorOptions: new CardColorOptions(firered, rightFrame: "Apho_MistBlazing_RightPage")),
+                new CardOptions(4, cardColorOptions: new CardColorOptions(firered, rightFrame: "Apho_MistBlazing_RightPage")),
+                new CardOptions(5, cardColorOptions: new CardColorOptions(firered, rightFrame: "Apho_MistBlazing_RightPage")),
+                new CardOptions(6, cardColorOptions: new CardColorOptions(new Color(1f, 0.45f, 0f), leftFrame: "Apho_LeftPageGold", rightFrame: "Apho_MistBlazingEGO_RightPage", customIconColor: new Color(1, 0.843f, 0))),
                 new CardOptions(7, cardColorOptions: new CardColorOptions(new Color(1f, 0.45f, 0f))),
                 new CardOptions(8, cardColorOptions: new CardColorOptions(new Color(1f, 0.45f, 0f))),
-                new CardOptions(11, cardColorOptions: new CardColorOptions(Color.gray)),
-                new CardOptions(12, cardColorOptions: new CardColorOptions(Color.gray)),
-                new CardOptions(13, cardColorOptions: new CardColorOptions(Color.gray)),
-                new CardOptions(14, cardColorOptions: new CardColorOptions(Color.gray)),
-                new CardOptions(15, cardColorOptions: new CardColorOptions(Color.gray)),
-                new CardOptions(16, cardColorOptions: new CardColorOptions(new Color(0.945f, 0.898f, 0.675f))),
+                new CardOptions(11, cardColorOptions: new CardColorOptions(Color.gray, rightFrame: "Apho_MistSmoke_RightPage")),
+                new CardOptions(12, cardColorOptions: new CardColorOptions(Color.gray, rightFrame: "Apho_MistSmoke_RightPage")),
+                new CardOptions(13, cardColorOptions: new CardColorOptions(Color.gray, rightFrame: "Apho_MistSmoke_RightPage")),
+                new CardOptions(14, cardColorOptions: new CardColorOptions(Color.gray, rightFrame: "Apho_MistSmoke_RightPage")),
+                new CardOptions(15, cardColorOptions: new CardColorOptions(Color.gray, rightFrame: "Apho_MistSmoke_RightPage")),
+                new CardOptions(16, cardColorOptions: new CardColorOptions(new Color(0.945f, 0.898f, 0.675f), leftFrame: "Apho_LeftPageGold", rightFrame: "Apho_MistSmokeEGO_RightPage", customIconColor: new Color(1, 0.843f, 0))),
                 new CardOptions(17, cardColorOptions: new CardColorOptions(new Color(0.945f, 0.898f, 0.675f))),
-                new CardOptions(18, cardColorOptions: new CardColorOptions(new Color(0.945f, 0.898f, 0.675f)))
+                new CardOptions(18, cardColorOptions: new CardColorOptions(new Color(0.945f, 0.898f, 0.675f))),
+                //Bloody
+                new CardOptions(21, cardColorOptions: new CardColorOptions(bloodred, rightFrame: "Apho_MistBloody_RightPage")),
+                new CardOptions(22, cardColorOptions: new CardColorOptions(bloodred, rightFrame: "Apho_MistBloody_RightPage")),
+                new CardOptions(23, cardColorOptions: new CardColorOptions(bloodred, rightFrame: "Apho_MistBloody_RightPage")),
+                new CardOptions(24, cardColorOptions: new CardColorOptions(bloodred, rightFrame: "Apho_MistBloody_RightPage")),
+                new CardOptions(25, cardColorOptions: new CardColorOptions(bloodred, rightFrame : "Apho_MistBloody_RightPage")),
+                new CardOptions(26, cardColorOptions: new CardColorOptions(new Color(0.533f, 0.05f, 0.031f), leftFrame: "Apho_LeftPageGold", rightFrame : "Apho_MistBloodyEGO_RightPage", customIconColor: new Color(1, 0.843f, 0))),
+                new CardOptions(27, cardColorOptions: new CardColorOptions(new Color(0.533f, 0.05f, 0.031f))),
+                new CardOptions(28, cardColorOptions: new CardColorOptions(new Color(0.533f, 0.05f, 0.031f))),
             });
         }
 
@@ -121,7 +141,8 @@ namespace AphoMoreMists
         {
             ModParameters.DropBookOptions.Add(AphoMoreMists.PackageId, new List<DropBookOptions>
             {
-                new DropBookOptions(1, new DropBookColorOptions(Color.red, Color.red))
+                new DropBookOptions(1, new DropBookColorOptions(Color.red, Color.red)),
+                new DropBookOptions(2, new DropBookColorOptions(new Color(0.533f, 0.031f, 0.031f), new Color(0.533f, 0.031f, 0.031f)))
             });
         }
 
@@ -129,7 +150,7 @@ namespace AphoMoreMists
         {
             ModParameters.CategoryOptions.Add(AphoMoreMists.PackageId, new List<CategoryOptions>
             {
-                new CategoryOptions(AphoMoreMists.PackageId, "_1", baseGameCategory: UIStoryLine.TheRedMist, categoryBooksId: new List<int> { 10000001, 10000002, 10000003 }, customIconSpriteId: "", baseIconSpriteId: "", categoryNameId: "", categoryName: "", chapter: 7, bookDataColor: null, credenzaBooksId: new List<int> { 10000001, 10000002, 10000003 })
+                new CategoryOptions(AphoMoreMists.PackageId, "_1", baseGameCategory: UIStoryLine.TheRedMist, categoryBooksId: new List<int> { 10000001, 10000002, 10000003, 10000004 }, customIconSpriteId: "", baseIconSpriteId: "", categoryNameId: "", categoryName: "", chapter: 7, bookDataColor: null, credenzaBooksId: new List<int> { 10000001, 10000002, 10000003, 10000004 })
             });
         }
     }
@@ -459,7 +480,7 @@ namespace AphoMoreMists
     {
         public static string Name = "Scorching Spear";
 
-        public static string Desc = "If 8 or more damage was dealt with this page, draw 1 page and reduce the Cost of all other 'Scorching Spear' by 1";
+        public static string Desc = "If 8 or more damage was dealt with this page, draw 1 page and reduce the Cost of all other 'Scorching Spears' by 1";
 
         private int _activateLine = 8;
 
@@ -628,6 +649,10 @@ namespace AphoMoreMists
             target?.bufListDetail.AddKeywordBufByCard(KeywordBuf.Burn, 10, base.owner);
         }
     }
+    public class DiceCardAbility_Apho_MistBlazing_V : DiceCardAbilityBase
+    {
+        public static string Desc = "[On Hit] Destroy a Combat Page set on another random Speed die of the target.";
+    }
     public class DiceCardSelfAbility_Apho_MistBlazing_V : DiceCardSelfAbilityBase
     {
         public override string[] Keywords => new string[1] { "Burn_Keyword" };
@@ -664,7 +689,7 @@ namespace AphoMoreMists
     {
         public static string Name = "Blunt Brume";
 
-        public static string Desc = "If 8 or more damage was dealt with this page, draw 1 page and reduce the Cost of all other 'Blunt Brume' by 1";
+        public static string Desc = "If 8 or more damage was dealt with this page, draw 1 page and reduce the Cost of all other 'Blunt Brumes' by 1";
 
         private int _activateLine = 8;
 
@@ -869,10 +894,14 @@ namespace AphoMoreMists
             target?.bufListDetail.AddKeywordBufByCard(KeywordBuf.Smoke, 10, base.owner);
         }
     }
+
+    public class DiceCardAbility_Apho_MistSmoke_V : DiceCardAbilityBase
+    {
+        public static string Desc = "[On Hit] Destroy a Combat Page set on another random Speed die of the target.";
+    }
     public class DiceCardSelfAbility_Apho_MistSmoke_V : DiceCardSelfAbilityBase
     {
         public override string[] Keywords => new string[1] { "Smoke_Keyword" };
-
         public override void OnSucceedAttack()
         {
             if (card.target == null)
