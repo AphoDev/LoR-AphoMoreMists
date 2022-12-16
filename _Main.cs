@@ -77,10 +77,10 @@ namespace AphoMoreMists
         {
             ModParameters.KeypageOptions.Add(AphoMoreMists.PackageId, new List<KeypageOptions>
             {
-                new KeypageOptions(10000001, keypageColorOptions: new KeypageColorOptions(Color.red, Color.red)),
-                new KeypageOptions(10000002, keypageColorOptions: new KeypageColorOptions(new Color(1f, 0.3f, 0f), new Color(1f, 0.3f, 0f))),
-                new KeypageOptions(10000003, keypageColorOptions: new KeypageColorOptions(Color.gray, Color.gray)),
-                new KeypageOptions(10000004, keypageColorOptions: new KeypageColorOptions(new Color(0.533f, 0.031f, 0.031f), new Color(0.533f, 0.031f, 0.031f))),
+                new KeypageOptions(10000001, everyoneCanEquip: true, keypageColorOptions: new KeypageColorOptions(Color.red, Color.red)),
+                new KeypageOptions(10000002, everyoneCanEquip: true, keypageColorOptions: new KeypageColorOptions(new Color(1f, 0.3f, 0f), new Color(1f, 0.3f, 0f))),
+                new KeypageOptions(10000003, everyoneCanEquip: true, keypageColorOptions: new KeypageColorOptions(Color.gray, Color.gray)),
+                new KeypageOptions(10000004, everyoneCanEquip: true, keypageColorOptions: new KeypageColorOptions(new Color(0.533f, 0.031f, 0.031f), new Color(0.533f, 0.031f, 0.031f))),
             });
         }
 
